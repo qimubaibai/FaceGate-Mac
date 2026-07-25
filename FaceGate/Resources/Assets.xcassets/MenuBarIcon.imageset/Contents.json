@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "filename" : "menubar_18.png",
       "idiom" : "mac",
-      "filename" : "icon_18x18.png",
       "scale" : "1x"
     },
     {
+      "filename" : "menubar_36.png",
       "idiom" : "mac",
-      "filename" : "icon_36x36.png",
       "scale" : "2x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
     "template-rendering-intent" : "template"

@@ -329,7 +329,7 @@ private struct LockToggleButton: View {
 
 private struct MenuButton: View {
     let icon: String
-    let title: String
+    let title: LocalizedStringKey
     var isDestructive: Bool = false
     let action: () -> Void
 

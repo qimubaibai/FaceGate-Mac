@@ -8,8 +8,8 @@ struct AuthOverlayView: View {
     let appName: String
     let appIcon: NSImage
     var isAppLocking: Bool = true
-    var cancelButtonTitle: String = "Cancel & Close App"
-    var subtitleMessage: String? = nil
+    var cancelButtonTitle: LocalizedStringKey = "Cancel & Close App"
+    var subtitleMessage: LocalizedStringKey? = nil
     let onAuthenticated: () -> Void
     let onCancel: () -> Void
 
@@ -60,10 +60,17 @@ struct AuthOverlayView: View {
                     .padding(.bottom, 8)
 
                 // "App Name is Locked".
-                Text(isAppLocking ? "\(appName) is Locked" : appName)
-                    .font(.system(size: 22, weight: .semibold, design: .rounded))
-                    .foregroundColor(.white)
-                    .padding(.bottom, 6)
+                if isAppLocking {
+                    Text("\(appName) is Locked")
+                        .font(.system(size: 22, weight: .semibold, design: .rounded))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 6)
+                } else {
+                    Text(LocalizedStringKey(appName))
+                        .font(.system(size: 22, weight: .semibold, design: .rounded))
+                        .foregroundColor(.white)
+                        .padding(.bottom, 6)
+                }
 
                 // Subtitle message / Timeout.
                 if isTimedOut {

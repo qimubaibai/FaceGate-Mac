@@ -152,7 +152,7 @@ private struct CodexSidebarRow: View {
                     .frame(width: 22)
                     .symbolRenderingMode(.hierarchical)
 
-                Text(tab.rawValue)
+                Text(LocalizedStringKey(tab.rawValue))
                     .font(.system(size: 14, weight: .medium))
                     .lineLimit(1)
 
@@ -181,10 +181,10 @@ private struct SettingsDetailPane: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .bottom) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(selectedTab.rawValue)
+                    Text(LocalizedStringKey(selectedTab.rawValue))
                         .font(.system(size: 24, weight: .semibold))
                         .foregroundStyle(.white.opacity(0.94))
-                    Text(selectedTab.description)
+                    Text(LocalizedStringKey(selectedTab.description))
                         .font(.system(size: 13))
                         .foregroundStyle(.white.opacity(0.48))
                 }

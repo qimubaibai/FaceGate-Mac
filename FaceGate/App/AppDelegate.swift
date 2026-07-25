@@ -303,7 +303,7 @@ extension AppDelegate: SPUUpdaterDelegate {
         DispatchQueue.main.async {
             let alert = NSAlert()
             alert.messageText = "Update Failed — Uninstall Protection Is On"
-            alert.informativeText = "FaceGate's uninstall protection prevents the app bundle from being modified. To update, disable Uninstall Protection in Settings → Advanced, then check for updates again."
+            alert.informativeText = "FaceGate's uninstall protection prevents the app bundle from being modified. To update, disable Uninstall Protection in Settings → Behavior, then check for updates again."
             alert.addButton(withTitle: "OK")
             alert.runModal()
         }

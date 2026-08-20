@@ -147,13 +147,6 @@ final class CameraManager: NSObject, ObservableObject {
         permissionGranted = true
 
         captureSession.beginConfiguration()
-        if captureSession.canSetSessionPreset(.hd1920x1080) {
-            captureSession.sessionPreset = .hd1920x1080
-        } else if captureSession.canSetSessionPreset(.high) {
-            captureSession.sessionPreset = .high
-        } else {
-            captureSession.sessionPreset = .medium
-        }
 
         guard let camera = resolveCamera() else {
             error = .cameraUnavailable
@@ -177,6 +170,16 @@ final class CameraManager: NSObject, ObservableObject {
             self.error = .configurationFailed
             captureSession.commitConfiguration()
             return
+        }
+
+        // Set preset AFTER the input is attached, so support is checked
+        // against the actual resolved device instead of an empty session.
+        if camera.supportsSessionPreset(.hd1920x1080) && captureSession.canSetSessionPreset(.hd1920x1080) {
+            captureSession.sessionPreset = .hd1920x1080
+        } else if captureSession.canSetSessionPreset(.high) {
+            captureSession.sessionPreset = .high
+        } else {
+            captureSession.sessionPreset = .medium
         }
 
         // Output: video frames.
